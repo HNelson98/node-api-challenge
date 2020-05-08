@@ -80,10 +80,10 @@ router.put('/:id', (req, res) => {
     } else {
         Projects.update(id, req.body)
         .then(project => {
-            res.status(200).json(project)
+            res.status(201).json(project)
         })
         .catch(err =>{
-            console.log('POST project err', err)
+            console.log('PUT project err', err)
         res.status(500).json({ errorMessage: 'there was an error in updating the project in the database'})
         })
     }
@@ -97,7 +97,7 @@ router.delete('/:id', (req, res) => {
     Projects.remove(id)
     .then(project => {
         if(project){
-            res.status(200).json({message: "project deleted succsesfully"})
+            res.json({message: "project deleted succsesfully"})
         } else {
             res.status(404).json({error: "There is no project with that ID"})
         }

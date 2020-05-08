@@ -37,4 +37,21 @@ router.post('/:id', (req, res) =>{
    
 })
 
+// PUT an action
+
+router.put('/:id', (req, res) => {
+    const id = Number(req.params.id)
+    const {description, notes} = req.body
+
+    if ( !description || !notes){
+        res.status(400).json({errorMessage: 'missing the name or description'})
+    } else Actions.update(id, req.body)
+    .then(action => {
+        res.status(201).json(action)
+    })
+    .catch(err => {
+        res.status(500).json({ errorMessage: 'there was an error in updating the action in the database'})
+    })
+})
+
 module.exports = router;
