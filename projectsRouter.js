@@ -50,4 +50,23 @@ router.post('/', (req, res) =>{
     }
 })
 
+// PUT on a project
+router.put('/:id', (req, res) => {
+    const {name, description} = req.body
+    const id = Number(req.params.id)
+
+    if (!name || !description){
+        res.status(400).json({errorMessage: 'missing the name or description'})
+    } else {
+        Projects.update(id, req.body)
+        .then(project => {
+            res.status(200).json(project)
+        })
+        .catch(err =>{
+            console.log('POST project err', err)
+        res.status(500).json({ errorMessage: 'there was an error in updating the project in the database'})
+        })
+    }
+})
+
 module.exports = router;
