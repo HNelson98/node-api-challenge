@@ -16,12 +16,12 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [T] Create a forked copy of this project.
+- [T] Add your _Team Lead_ as collaborator on Github.
+- [T] Clone your forked version of the Repository.
+- [T] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+- [T] Implement the project on this Branch, committing changes regularly.
+- [T] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
@@ -40,23 +40,33 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+express router, and port
+
 - [ ] Describe Middleware?
+
+middleware is a function that intercepts a process and then does something with the data flowing through that process
 
 - [ ] Describe a Resource?
 
+ A Resourcec is an object that allows us to do so much, like map pathnames.
+
 - [ ] What can the API return to help clients know if a request was successful?
+
+a message with a status code
 
 - [ ] How can we partition our application into sub-applications?
 
+by routing!
+
 ## Minimum Viable Product
 
-- [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
-- [ ] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
+- [Y] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+- [Y] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
 
 Design and build the necessary endpoints to:
 
-- [ ] Perform CRUD operations on _projects_ and _actions_. When adding an action, make sure the `project_id` provided belongs to an existing `project`. If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
-- [ ] Retrieve the list of actions for a project.
+- [Y] Perform CRUD operations on _projects_ and _actions_. When adding an action, make sure the `project_id` provided belongs to an existing `project`. If you try to add an action with an `id` of 3 and there is no project with that `id` the database will return an error.
+- [Y] Retrieve the list of actions for a project.
 
 Please read the following sections before implementing the Minimum Viable Product, they describe how the database is structured and the files and methods available for interacting with the data.
 
