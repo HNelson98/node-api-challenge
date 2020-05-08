@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Projects = require('./data/helpers/projectModel');
 
+
 // GET all projects
 router.get('/', (req, res) => {
     Projects.get()
@@ -107,5 +108,8 @@ router.delete('/:id', (req, res) => {
         res.status(500).json({ errorMessage: 'could not delete the project' })
       })
 })
+
+
+
 
 module.exports = router;
