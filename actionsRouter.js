@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         res.status(200).json(actions)
       })
       .catch(err => {
-        console.log('GET all projects err', err)
+        console.log('GET all actions err', err)
         res.status(500).json({ errorMessage: 'could not find the actions' })
       })
 })
@@ -28,8 +28,8 @@ router.get('/:id', (req, res) => {
         
       })
       .catch(err => {
-        console.log('GET project err', err)
-        res.status(500).json({ errorMessage: 'could not find the project' })
+        console.log('GET action err', err)
+        res.status(500).json({ errorMessage: 'could not find the action' })
       })
 })
 
@@ -80,6 +80,7 @@ router.put('/:id', (req, res) => {
         res.status(201).json(action)
     })
     .catch(err => {
+        console.log('PUT action err', err)
         res.status(500).json({ errorMessage: 'there was an error in updating the action in the database'})
     })
 })
@@ -99,7 +100,7 @@ router.delete('/:id', (req, res) => {
         
       })
       .catch(err => {
-        console.log('GET project err', err)
+        console.log('DELETE action err', err)
         res.status(500).json({ errorMessage: 'could not delete the action' })
       })
 })
