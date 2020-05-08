@@ -32,6 +32,25 @@ router.get('/:id', (req, res) => {
       })
 })
 
+// GET project actions
+router.get('/:id/actions', (req, res) => {
+    const id = Number(req.params.id)
+
+    Projects.getProjectActions(id)
+    .then(actions => {
+        if(actions){
+            res.status(200).json(actions)
+        } else {
+            res.status(404).json({error: "There are no actions for the project with that ID"})
+        }
+        
+      })
+      .catch(err => {
+        console.log('GET project err', err)
+        res.status(500).json({ errorMessage: 'could not find the actions' })
+      })
+})
+
 //POST new project
 router.post('/', (req, res) =>{
     const {name, description} = req.body
