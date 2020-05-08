@@ -2,6 +2,36 @@ const router = require('express').Router();
 const Actions = require('./data/helpers/actionModel')
 const Projects = require('./data/helpers/projectModel');
 
+//GET all actions
+router.get('/', (req, res) => {
+    Actions.get()
+    .then(actions => {
+        res.status(200).json(actions)
+      })
+      .catch(err => {
+        console.log('GET all projects err', err)
+        res.status(500).json({ errorMessage: 'could not find the actions' })
+      })
+})
+
+//GET action by id
+router.get('/:id', (req, res) => {
+    const id = Number(req.params.id)
+
+    Actions.get(id)
+    .then(action => {
+        if(action){
+            res.status(200).json(action)
+        } else {
+            res.status(404).json({error: "There is no action with that ID"})
+        }
+        
+      })
+      .catch(err => {
+        console.log('GET project err', err)
+        res.status(500).json({ errorMessage: 'could not find the project' })
+      })
+})
 
 // POST an action
 router.post('/:id', (req, res) =>{
@@ -52,6 +82,26 @@ router.put('/:id', (req, res) => {
     .catch(err => {
         res.status(500).json({ errorMessage: 'there was an error in updating the action in the database'})
     })
+})
+
+//DELETE an action
+
+router.delete('/:id', (req, res) => {
+    const id = Number(req.params.id)
+
+    Actions.remove(id)
+    .then(project => {
+        if(project){
+            res.json({message: "action deleted succsesfully"})
+        } else {
+            res.status(404).json({error: "There is no action with that ID"})
+        }
+        
+      })
+      .catch(err => {
+        console.log('GET project err', err)
+        res.status(500).json({ errorMessage: 'could not delete the action' })
+      })
 })
 
 module.exports = router;
